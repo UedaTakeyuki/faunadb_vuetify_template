@@ -87,10 +87,26 @@ export default {
       .catch((ret) => console.log(ret))
     },
     add: function(){
-
+      this.client.query(
+        this.q.Create(
+          this.q.Collection(this.collection), 
+          { data: JSON.parse(this.textarea_data) }))
+      .then( (ret) => {
+        console.log(ret);
+        this.update_pokes();
+      })
+      .catch((ret) => console.log(ret))
     },
     remove: function(){
-
+      this.client.query(
+        this.q.Update(
+          this.q.Ref(this.q.Collection(this.collection), this.selected_id),
+          { data: JSON.parse(this.textarea_data) }))
+      .then( (ret) => {
+        console.log(ret);
+        this.update_pokes();
+      })
+      .catch((ret) => console.log(ret))
     }
   },
 
