@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Homepage</h1>
-    {{poke}}
+    {{poke}}<br>{{pokes}}
   </div>
 </template>
 
@@ -25,12 +25,14 @@ export default {
     .then( (ret) => {
       console.log(ret);
       this.poke = ret.data[0].data;
+      this.pokes = ret.data;
     })
     .catch((ret) => console.log(ret))
   },
   data: function () {
     return {
       poke: "",
+      pokes: "",
     }
   }
 };
