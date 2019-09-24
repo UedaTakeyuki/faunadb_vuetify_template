@@ -23,7 +23,6 @@
       <v-btn @click="add()">add</v-btn>
       <v-btn @click="remove()">remove</v-btn>
     </v-form>
-    {{textarea_data}}
   </div>
 </template>
 
@@ -75,6 +74,11 @@ export default {
       this.selected_data = data;
       this.textarea_data = JSON.stringify(data)
     },
+    clear_selected: function(){
+      this.selected_id = "";
+      this.selected_data = "";
+      this.textarea_data = "";
+    },
     update: function(){
       this.client.query(
         this.q.Update(
@@ -99,12 +103,12 @@ export default {
     },
     remove: function(){
       this.client.query(
-        this.q.Update(
-          this.q.Ref(this.q.Collection(this.collection), this.selected_id),
-          { data: JSON.parse(this.textarea_data) }))
+        this.q.Delete(
+          this.q.Ref(this.q.Collection(this.collection), this.selected_id)))
       .then( (ret) => {
         console.log(ret);
         this.update_pokes();
+        this.clear_selected();
       })
       .catch((ret) => console.log(ret))
     }
