@@ -6,7 +6,7 @@
                   :collection = "pokemon"
                   :index = "all_pokemon"
     />-->
-    <FaunaDB_CRUD 
+    <FaunaDB_CLUD 
                   secret = "fnADY47y_RACEVrSDZcfA3TxW6r9vSArYlbWatoa"
                   collection = "pokemon"
                   index = "all_pokemon"
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import FaunaDB_CRUD from '@/components/FaunaDB_CRUD';
+import FaunaDB_CLUD from '@/components/FaunaDB_CLUD';
 
 export default {
   components: {
-    FaunaDB_CRUD
+    FaunaDB_CLUD
   }
 }
 </script>

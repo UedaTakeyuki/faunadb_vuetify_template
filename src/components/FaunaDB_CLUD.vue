@@ -63,11 +63,15 @@ export default {
         )
       )
       .then( (ret) => {
+        /* eslint-disable no-console */
         console.log(ret);
+        /* eslint-enable no-console */
         this.poke = ret.data[0].data;
         this.pokes = ret.data;
       })
+      /* eslint-disable no-console */
       .catch((ret) => console.log(ret))
+      /* eslint-enable no-console */
     },
     set_selected: function(id, data){
       this.selected_id = id;
@@ -85,10 +89,14 @@ export default {
           this.q.Ref(this.q.Collection(this.collection), this.selected_id),
           { data: JSON.parse(this.textarea_data) }))
       .then( (ret) => {
+        /* eslint-disable no-console */
         console.log(ret);
+        /* eslint-enable no-console */
         this.update_pokes();
       })
+      /* eslint-disable no-console */
       .catch((ret) => console.log(ret))
+      /* eslint-enable no-console */
     },
     add: function(){
       this.client.query(
@@ -96,23 +104,31 @@ export default {
           this.q.Collection(this.collection), 
           { data: JSON.parse(this.textarea_data) }))
       .then( (ret) => {
+        /* eslint-disable no-console */
         console.log(ret);
 //        console.log(ret.ref.value.id);
+        /* eslint-enable no-console */
         this.selected_id = ret.ref.value.id;
         this.update_pokes();
       })
+      /* eslint-disable no-console */
       .catch((ret) => console.log(ret))
+      /* eslint-enable no-console */
     },
     remove: function(){
       this.client.query(
         this.q.Delete(
           this.q.Ref(this.q.Collection(this.collection), this.selected_id)))
       .then( (ret) => {
+        /* eslint-disable no-console */
         console.log(ret);
+        /* eslint-enable no-console */
         this.update_pokes();
         this.clear_selected();
       })
+      /* eslint-disable no-console */
       .catch((ret) => console.log(ret))
+      /* eslint-enable no-console */
     }
   },
 
