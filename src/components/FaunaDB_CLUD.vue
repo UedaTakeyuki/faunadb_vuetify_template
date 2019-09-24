@@ -18,11 +18,12 @@
     </v-list>
     {{selected_id}}
     <v-form>
-      <v-textarea label="data" :value="textarea_data"></v-textarea>
+      <v-textarea label="data" v-model="textarea_data"></v-textarea>
       <v-btn @click="update()">update</v-btn>
       <v-btn @click="add()">add</v-btn>
       <v-btn @click="remove()">remove</v-btn>
     </v-form>
+    {{textarea_data}}
   </div>
 </template>
 
@@ -75,7 +76,15 @@ export default {
       this.textarea_data = JSON.stringify(data)
     },
     update: function(){
-
+      this.client.query(
+        this.q.Update(
+          this.q.Ref(this.q.Collection(this.collection), this.selected_id),
+          { data: JSON.parse(this.textarea_data) }))
+      .then( (ret) => {
+        console.log(ret);
+        this.update_pokes();
+      })
+      .catch((ret) => console.log(ret))
     },
     add: function(){
 
