@@ -97,6 +97,8 @@ export default {
           { data: JSON.parse(this.textarea_data) }))
       .then( (ret) => {
         console.log(ret);
+//        console.log(ret.ref.value.id);
+        this.selected_id = ret.ref.value.id;
         this.update_pokes();
       })
       .catch((ret) => console.log(ret))
