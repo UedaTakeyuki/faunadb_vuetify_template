@@ -60,6 +60,7 @@ export default {
     links: [
       { icon: 'home', text: 'Home', route: '/'},
       { icon: 'contacts', text: 'About', route: '/about'},
+      { icon: 'pokemons', text: 'Pokemons', route: '/pokemons'},
     ]
   }),
 }
