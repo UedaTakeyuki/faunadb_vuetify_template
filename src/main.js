@@ -12,7 +12,13 @@ Vue.config.productionTip = false
 Vue.prototype.$faunadb = require('faunadb');
 Vue.prototype.$q = Vue.prototype.$faunadb.query;
 // server_key
-Vue.prototype.$client = new Vue.prototype.$faunadb.Client({ secret: 'fnADY47y_RACEVrSDZcfA3TxW6r9vSArYlbWatoa' });
+Vue.prototype.$client = new Vue.prototype.$faunadb.Client({ secret: process.env.VUE_APP_FAUNADB_SECRET });
+//Vue.prototype.$client = new Vue.prototype.$faunadb.Client({ secret: 'fnADY47y_RACEVrSDZcfA3TxW6r9vSArYlbWatoa' });
+
+/* eslint-disable no-console */
+console.log(process.env.VUE_APP_FAUNADB_SECRET);
+/* eslint-enable no-console */
+
 
 new Vue({
   router,

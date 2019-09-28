@@ -7,7 +7,7 @@
                   :index = "all_pokemon"
     />-->
     <FaunaDB_CLUD 
-                  secret = "fnADY47y_RACEVrSDZcfA3TxW6r9vSArYlbWatoa"
+                  :secret = "faunadb_secret"
                   collection = "pokemon"
                   index = "all_pokemon"
     />
@@ -20,6 +20,11 @@ import FaunaDB_CLUD from '@/components/FaunaDB_CLUD';
 export default {
   components: {
     FaunaDB_CLUD
+  },
+  data: function () {
+    return {
+      faunadb_secret: process.env.VUE_APP_FAUNADB_SECRET,
+    }
   }
 }
 </script>
